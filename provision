@@ -1,0 +1,16 @@
+#!/bin/bash
+
+sudo apt install qterminal zsh zsh-common zsh-autosuggestions zsh-syntax-highlighting fonts-firacode
+
+mkdir -p ~/.config/qterminal.org
+
+cp templates/qterminal.ini ~/.config/qterminal.org/
+cp templates/zshrc ~/.zshrc
+
+sudo cp templates/kd.colorscheme /usr/share/qtermwidget5/color-schemes/
+
+sudo update-alternatives --set x-terminal-emulator /usr/bin/qterminal
+
+sudo usermod --shell /usr/bin/zsh $USER
+
+chsh -s $(which zsh)
