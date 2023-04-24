@@ -1,15 +1,15 @@
 # Hacks and Tweaks
+- [Hacks and Tweaks](#hacks-and-tweaks)
+  - [Git](#git)
+  - [Ilias](#ilias)
+  - [TMS](#tms)
+  - [Bash](#bash)
+  - [MySql](#mysql)
+  - [PHP](#php)
+  - [Salt](#salt)
 
-## Table of Contents
-1. [Git](#git)
-2. [Ilias](#ilias)
-3. [TMS](#tms)
-4. [Bash](#bash)
-5. [MySql](#mysql)
-6. [PHP](#php)
-7. [Salt](#salt)
 
-## Git <a header="git"></a>
+## Git
 
 Cleans all untracked files. Dryrun with -n
 ```bash
@@ -26,17 +26,17 @@ Clears the stash
 git stash clear
 ```
 
-## Ilias <a header="ilias"></a>
+## Ilias
 
-## TMS <a header="tms"></a>
+## TMS
 
-## Bash <a header="bash"></a>
+## Bash
 
-## MySql <a header="mysql"></a>
+## MySql
 
-## PHP <a header="php"></a>
+## PHP
 
-## Salt <a header="salt"></a>
+## Salt
 
 Refresh pillar data for a minion
 ```bash
