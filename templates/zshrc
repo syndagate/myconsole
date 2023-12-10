@@ -59,6 +59,7 @@ setopt hist_verify            # show command with history expansion to user befo
 source /usr/share/zplug/init.zsh
 
 zplug "plugins/history-substring-search", from:oh-my-zsh
+zplug "plugins/git-prompt", from:oh-my-zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
