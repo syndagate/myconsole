@@ -1,8 +1,36 @@
-# ~/.zshrc file for zsh interactive shells.
-# see /usr/share/doc/zsh/examples/zshrc for examples
+# Load plugins
+if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
+then
+	. /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+fi
 
+if [ -f /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]
+then
+	. /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh 
+	bindkey '^[[A' history-substring-search-up
+	bindkey '^[OA' history-substring-search-up
+	bindkey '^[[B' history-substring-search-down
+	bindkey '^[OB' history-substring-search-down
+fi
+
+if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]
+then
+	. /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 
+	ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+fi
+
+if [ -f /usr/share/zsh-completions/zsh-completions.zsh ]
+then
+	. /usr/share/zsh-completions/zsh-completions.zsh 
+fi
+
+if [ -f /usr/share/zsh-git-prompt/zsh-git-prompt.zsh ]
+then
+	. /usr/share/zsh-git-prompt/zsh-git-prompt.zsh 
+fi
+
+# Set options
 setopt autocd              # change directory just by typing its name
-#setopt correct            # auto correct mistakes
 setopt interactivecomments # allow comments in interactive mode
 setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
 setopt nonomatch           # hide error message if there is no match for the pattern
@@ -45,6 +73,7 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+
 # History configurations
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
@@ -53,33 +82,10 @@ setopt hist_expire_dups_first # delete duplicates first when HISTFILE size excee
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
-#setopt share_history         # share command history data
-
-# zplug - manage plugins
-source /usr/share/zplug/init.zsh
-
-zplug "plugins/history-substring-search", from:oh-my-zsh
-zplug "plugins/git-prompt", from:oh-my-zsh
-zplug "plugins/autosuggestions.zsh", from:oh-my-zsh
-zplug "plugins/comand-not-found.zsh", from:oh-my-zsh
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# zplug - install/load new plugins when zsh is started or reloaded
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-zplug load
+setopt share_history          # share command history data
 
 # force zsh to show the complete history
 alias history="history 0"
-
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 
 # configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
@@ -262,14 +268,3 @@ fi
 alias ll='ls -l1'
 alias la='ls -A1'
 alias l='ls -CF1'
-
-# bat alias
-alias cat="batcat"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-if [ -d "$HOME/Projects/scripts" ] ; then
-        PATH="$HOME/Projects/scripts:$PATH"
-fi
-
-export EDITOR='vim'
